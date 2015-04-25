@@ -1,8 +1,3 @@
-
-1. 九九表を画面に表示しなさい
-　※桁数を考慮して列を合わせること
-
-
 public class Sample0425
 {
     public static void main(String args[])

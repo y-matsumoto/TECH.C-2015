@@ -1,0 +1,5 @@
+INDEX VERSION 1.127+C:\Users\student\Desktop\shokei\.metadata\.plugins\org.eclipse.jdt.core
+2441938283.index
+795957154.index
+2838831717.index
+1284074322.index

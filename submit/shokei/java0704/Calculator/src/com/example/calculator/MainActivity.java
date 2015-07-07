@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 
-	String op[] = { "+", "-", "*", "/" };
-	int num = 0;
+	int op;
+	int cnt = 0;
+	int num;
+	String numDisplay = "";
 	int sum = 0;
-	//ViewのIDの登録
+	// ViewのIDの登録
 	int Rid[] = { R.id.zero, R.id.one, R.id.two, R.id.three, R.id.four,
 			R.id.five, R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.plus,
 			R.id.minus, R.id.mult, R.id.divi, R.id.dot, R.id.equal, R.id.Copy,
@@ -25,11 +27,11 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//解の初期化
+		// 解の初期化
 		TextView mTextView = (TextView) findViewById(R.id.result);
 		mTextView.setText("0");
 
-		//リスナーの登録
+		// リスナーの登録
 		for (int btnId : Rid) {
 			Button mBtn = (Button) findViewById(btnId);
 			mBtn.setOnClickListener(this);
@@ -56,59 +58,68 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 
-	//click event
+	// click event
 	@Override
 	public void onClick(View v) {
 
 		switch (v.getId()) {
 		case R.id.zero:
-			numDisplay(0);
+			numDisplay("0");
 			break;
 		case R.id.one:
-			numDisplay(1);
+			numDisplay("1");
 			break;
 		case R.id.two:
-			numDisplay(2);
+			numDisplay("2");
 			break;
 		case R.id.three:
-			numDisplay(3);
+			numDisplay("3");
 			break;
 		case R.id.four:
-			numDisplay(4);
+			numDisplay("4");
 			break;
 		case R.id.five:
-			numDisplay(5);
+			numDisplay("5");
 			break;
 		case R.id.six:
-			numDisplay(6);
+			numDisplay("6");
 			break;
 		case R.id.seven:
-			numDisplay(7);
+			numDisplay("7");
 			break;
 		case R.id.eight:
-			numDisplay(8);
+			numDisplay("8");
 			break;
 		case R.id.nine:
-			numDisplay(9);
+			numDisplay("9");
 			break;
 		case R.id.plus:
-			sum = sum(num, 0, sum);
+			op = 0;
+			sum(0);
 			break;
 		case R.id.minus:
-			sum = sum(num, 1, sum);
+			op = 1;
+			sum(1);
 			break;
 		case R.id.mult:
-			sum = sum(num, 2, sum);
+			op = 2;
+			sum(2);
 			break;
 		case R.id.divi:
-			sum = sum(num, 3, sum);
+			op = 3;
+			sum(3);
 			break;
 		case R.id.dot:
 		case R.id.equal:
-			sumDisplay(sum);
+			sum(op);
+			break;
 		case R.id.Copy:
 		case R.id.BS:
+			numDel();
+			break;
 		case R.id.Clear:
+			init();
+			break;
 		case R.id.AC:
 		default:
 			break;
@@ -116,37 +127,76 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
 	}
 
-	//演算子の計算
-	public int sum(int num, int op, int sum) {
+	// 演算子の計算
+	public void sum(int op) {
+		int numTmp = num;
 
-		switch (op) {
-		case 0:
-			sum += num;
-			break;
-		case 1:
-			sum -= num;
-			break;
-		case 2:
-			sum *= num;
-			break;
-		case 3:
-			sum /= num;
-			break;
+		if (cnt == 0) {
+			sum = num;
+			cnt++;
+			numDisplay = "";
+			return;
 		}
 
-		return sum;
+		if (numDisplay != "") {
+			switch (op) {
+			case 0:
+				sum += numTmp;
+				break;
+			case 1:
+				sum -= numTmp;
+				break;
+			case 2:
+				sum *= numTmp;
+				break;
+			case 3:
+				sum /= numTmp;
+				break;
+			}
+
+			numDisplay = "";
+
+			sumDisplay();
+		}
+		// Toast.makeText(this, tmpSum, Toast.LENGTH_SHORT).show();
+
 	}
 
-	//入力された数字の表示
-	public void numDisplay(int num) {
+	// 入力された数字の表示
+	public void numDisplay(String btnNum) {
 		TextView text = (TextView) findViewById(R.id.result);
-		text.setText(num);
+		numDisplay += btnNum;
+		num = Integer.parseInt(numDisplay);
+		// Toast.makeText(this, numDisplay, Toast.LENGTH_SHORT).show();
+		text.setText(numDisplay);
 	}
 
-	//計算結果の表示
-	public void sumDisplay(int sum){
+	// 計算結果の表示
+	public void sumDisplay() {
 		TextView text = (TextView) findViewById(R.id.result);
-		text.setText(sum);
+		String tmpSum = String.valueOf(sum);
+		// Toast.makeText(this, tmpSum, Toast.LENGTH_SHORT).show();
+		text.setText(tmpSum);
+	}
+
+	// 一桁削除
+	public void numDel() {
+		TextView text = (TextView) findViewById(R.id.result);
+		String tmpNum = (String) text.getText();
+		int strLen = tmpNum.length() - 1;
+		numDisplay = tmpNum.substring(0, strLen);
+		num = Integer.parseInt(numDisplay);
+		text.setText(numDisplay);
+	}
+
+
+	// 初期化
+	public void init() {
+		num = 0;
+		numDisplay = "";
+		sum = 0;
+		cnt = 0;
+		sumDisplay();
 	}
 
 }

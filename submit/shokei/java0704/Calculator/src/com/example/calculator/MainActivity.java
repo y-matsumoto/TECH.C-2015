@@ -16,6 +16,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	int num;
 	String numDisplay = "";
 	int sum = 0;
+	//String[] sign = {"+","-","*","/"};
+	//ArrayList<String> stack = new ArrayList<String>(4);
 	// ViewのIDの登録
 	int Rid[] = { R.id.zero, R.id.one, R.id.two, R.id.three, R.id.four,
 			R.id.five, R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.plus,
@@ -138,6 +140,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			return;
 		}
 
+
 		if (numDisplay != "") {
 			switch (op) {
 			case 0:
@@ -157,10 +160,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			}
 
 			numDisplay = "";
-
+			//stackAdd(sign[op]);
 			sumDisplay();
 		}
-		// Toast.makeText(this, tmpSum, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, stack.toString(), Toast.LENGTH_SHORT).show();
 
 	}
 
@@ -171,6 +174,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		num = Integer.parseInt(numDisplay);
 		// Toast.makeText(this, numDisplay, Toast.LENGTH_SHORT).show();
 		text.setText(numDisplay);
+		//opDisplay();
+		//stackAdd(numDisplay);
 	}
 
 	// 計算結果の表示
@@ -179,6 +184,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		String tmpSum = String.valueOf(sum);
 		// Toast.makeText(this, tmpSum, Toast.LENGTH_SHORT).show();
 		text.setText(tmpSum);
+		//opDisplay();
 	}
 
 	// 一桁削除
@@ -187,10 +193,39 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		String tmpNum = (String) text.getText();
 		int strLen = tmpNum.length() - 1;
 		numDisplay = tmpNum.substring(0, strLen);
-		num = Integer.parseInt(numDisplay);
+		if (numDisplay.length() == 0 || numDisplay == null) {
+			num = 0;
+			numDisplay = "0";
+		} else {
+			num = Integer.parseInt(numDisplay);
+		}
 		text.setText(numDisplay);
 	}
 
+	/*
+	//式の表示
+	public void opDisplay(){
+		TextView opBox = (TextView) findViewById(R.id.opera);
+		String text = "";
+		for(int i = 3;i >= 0;i--){
+			text += (String)stack.get(i);
+		}
+
+		opBox.setText(text);
+	}
+
+
+	public void stackAdd(String element) {
+		if(isNumber(element) && isNumber(stack.get(-1))){
+			stack.set(-1,element);
+		}
+		stack.add(element);
+	}
+
+	public void stackRemove(String element){
+
+	}
+*/
 	// 初期化
 	public void init() {
 		num = 0;
@@ -198,6 +233,16 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		sum = 0;
 		cnt = 0;
 		sumDisplay();
+	}
+
+	//stringの数字判断
+	public boolean isNumber(String num) {
+	    try {
+	        Integer.parseInt(num);
+	        return true;
+	        } catch (NumberFormatException e) {
+	        return false;
+	    }
 	}
 
 }

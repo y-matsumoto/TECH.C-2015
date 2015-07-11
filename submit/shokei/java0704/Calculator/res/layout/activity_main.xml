@@ -20,6 +20,7 @@
         android:id="@+id/opera"
         android:layout_width="match_parent"
         android:layout_height="10dp"
+        android:textSize="9sp"
         android:layout_below="@+id/result"
         android:text="" />
 

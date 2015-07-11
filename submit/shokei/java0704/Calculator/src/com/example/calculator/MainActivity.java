@@ -94,20 +94,20 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			numDisplay("9");
 			break;
 		case R.id.plus:
-			op = 0;
 			sum(0);
+			op = 0;
 			break;
 		case R.id.minus:
-			op = 1;
 			sum(1);
+			op = 1;
 			break;
 		case R.id.mult:
-			op = 2;
 			sum(2);
+			op = 2;
 			break;
 		case R.id.divi:
-			op = 3;
 			sum(3);
+			op = 3;
 			break;
 		case R.id.dot:
 		case R.id.equal:
@@ -152,6 +152,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			case 3:
 				sum /= numTmp;
 				break;
+			default:
+				break;
 			}
 
 			numDisplay = "";
@@ -188,7 +190,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		num = Integer.parseInt(numDisplay);
 		text.setText(numDisplay);
 	}
-
 
 	// 初期化
 	public void init() {

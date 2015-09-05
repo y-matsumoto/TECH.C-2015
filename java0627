@@ -1,0 +1,5 @@
+1. 「Android電卓課題」PDFの仕様で電卓を完成させよ
+
+クリップボード使用のヒント：
+ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+cm.setText("test");

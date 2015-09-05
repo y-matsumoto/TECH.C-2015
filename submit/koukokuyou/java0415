@@ -1,0 +1,23 @@
+
+1. 九九表を画面に表示しなさい
+　※桁数を考慮して列を合わせること
+
+packet kukuhyou;
+
+public class kukuhyou{
+    public static void main(String[] args){
+   int  a, b ; 
+6 		System.out.println( " \t  九九表です" + 
+7 				" \n" ); 
+8 		for (b=1 ; b<= 9 ; b++)  { 
+9 			for (a=1 ; a<= 9 ; a++) { 
+10 
+ 
+11 				System.out.print("  "+ a+ "*"+ b+"= "+ a*b +"\t"); 
+12 
+ 
+13 			} 
+14 			System.out.println() ; 
+15 		} 
+16     } 
+17 } 

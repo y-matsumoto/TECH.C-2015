@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cal</string>
+    <string name="hello_world">Hello world!1111</string>
+    <string name="disp">Enter Values</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

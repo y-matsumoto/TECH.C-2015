@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ConfirmLockTest</string>
+    <string name="ButtonA">認証画面起動</string>
+    <string name="menu_settings">Settings</string>
+    <string name="InitialText">結果は、この部分に出力されます。</string>
+
+</resources>

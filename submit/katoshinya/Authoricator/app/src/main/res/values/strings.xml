@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Authoricator</string>
+    <string name="action_settings">Settings</string>
+    <string name="passcoderegis">パスコード登録</string>
+    <string name="errormessage">＜＜メッサージ表示エリア＞＞</string>
+    <string name="registeration">登録</string>
+    <string name="enter">解除</string>
+    <string name="passcodeenter">パスコード入力</string>
+    <string name="title_activity_enter_activity">Enter_activity</string>
+    <string name="title_activity_enter">Enter</string>
+    <string name="title_activity_main_content">MainContentActivity</string>
+    <string name="login_success">ログイン成功</string>
+    <string name="main_display">メイン画面</string>
+    <string name="passcode_change_omt">パス変更</string>
+    <string name="passcode_change_full">パスコード変更</string>
+    <string name="new_text">新</string>
+    <string name="old_text">旧</string>
+    <string name="change">変更</string>
+    <string name="title_activity_change_pass">ChangePassActivity</string>
+</resources>
